@@ -1,5 +1,5 @@
 # Static Documentation Site with PyScript
-A generic example of how to use PyScript in your documentation with Static Site hosting.
+A generic example of how to use PyScript in your documentation with Static Site hosting. The site content itself can be found in [index.html][https://github.com/JeffersGlass/pyscript-docs-demo-S3/blob/main/index.html]
 
 ## Live Site
 

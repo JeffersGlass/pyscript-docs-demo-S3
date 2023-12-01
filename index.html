@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Documentation with PyScript</title>
+    <script type="module" src="https://pyscript.net/releases/2023.11.2/core.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.2/core.css">
+    <style>
+        .box {
+            padding: 0.5rem; 
+        border-style: solid;
+            border-radius: 0.375rem; 
+            border-width: 2px; 
+            border-color: #60A5FA; 
+            font-style: italic; 
+
+
+            @media (min-width: 768px) { 
+            margin: 0.5rem; 
+            font-size: 0.875rem;
+            line-height: 1.25rem; 
+            background-color: #DBEAFE; 
+            }
+        }
+        
+        code {
+            color: #1D4ED8; 
+        }
+
+        .codeblock {
+            font-family:monospace;
+            background-color: rgb(201, 200, 254);
+            margin: .5rem;
+            padding: .25rem;
+        }
+    </style>
+</head>
+<body>
+    <p class="box">This page demos how PyScript can be used to make online documentation interactive. It is one of the demos created for the conference talk 'Making Your Documentation Interactive with PyScript' by Jeff Glass. See <a href="https://github.com/JeffersGlass/pyscript-docs-demo-S3">more details on that talk</a>, or <a href="https://github.com/JeffersGlass/pyscript-docs-demo-S3">the code for this site</a> on GitHub.</p>
+
+    <h1>The Datetime Module</h1>
+
+    <p>The <code>datetime</code> module can be used to reference specific times, timespans, epochs, and calendar days.</p>
+    <p>Let's explore the relationship between the <code>datetime</code> and <code>timedelta</code> classes. If we create a new datetime:</p>
+    <pre class="codeblock">
+from datetime import datetime
+d_1 = datetime(2023, 12, 1, 14, 30, 00)
+print(d_1)
+    </pre>
+    <script type="py">
+def run_block_1(*args):
+    exec("""
+from pyscript import display
+from datetime import datetime
+d_1 = datetime(2023, 12, 1, 14, 30, 00)
+display(d_1, target="output-1")""", globals())
+    </script>
+   <div id="output-1"></div>
+   <button py-click="run_block_1">Run Code</button>
+   <br>
+
+   <p>We can add a <code>timedelta</code> object to it to create another <code>datetime</code> object:</p>
+
+    <pre class="codeblock">
+delta = timedelta(days=90, hours=16, minutes=35)
+d_2 = d_1 + delta
+print(delta)
+print(d_2)
+    </pre>
+    <script type="py">
+def run_block_2(*args):
+    exec("""
+from pyscript import display
+from datetime import datetime, timedelta
+delta = timedelta(days=90, hours=16, minutes=35)
+d_2 = d_1 + delta
+display(delta, target="output-2")
+display(d_2, target="output-2")
+""", globals())
+    </script>
+   <div id="output-2"></div>
+   <button py-click="run_block_2">Run Code</button>
+
+   <p>Or we can subtract one <code>datetime</code> from another to create a <code>timedelta</code>:</p>
+
+    <pre class="codeblock">
+d_3 = datetime(2023, 12, 14, 16, 30)
+d_4 = datetime(2024, 5, 13, 11, 15)
+print(d_3 - d_4)
+    </pre>
+    <script type="py">
+def run_block_3(*args):
+    exec("""
+from pyscript import display
+from datetime import datetime, timedelta
+d_3 = datetime(2023, 12, 14, 16, 30)
+d_4 = datetime(2024, 5, 13, 11, 15)
+display(d_4 - d_3 , target="output-3")
+""", globals())
+    </script>
+   <div id="output-3"></div>
+   <button py-click="run_block_3">Run Code</button>
+
+</body>
+</html>
